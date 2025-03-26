@@ -61,24 +61,20 @@ total_cost = float(input())
 
 portion_down_payment = (float(total_cost * .25))
 
-current_savings = 0
+current_savings = 0.0
 
-annual_return = .04
+annual_return = 0.04
 
-monthly_return = annual_return / 12
+monthly_return = float(annual_return / 12)
 
 counter = 0
   
 
 while current_savings < portion_down_payment:
-   monthly_savings = portion_saved * (annual_salary / 12) * (1 + monthly_return)
-   current_savings += monthly_savings
+   monthly_savings = portion_saved * (annual_salary / 12)
+   current_savings += monthly_savings + (current_savings * monthly_return)
    counter += 1
-   if current_savings >= portion_down_payment:
-       rounded_monthly_savings = round(monthly_savings,2)
-       print("Your monthly savings is $" + str(rounded_monthly_savings) + ".")
-       print("You will have enough for your down payment in "+ str(counter) +" months.")
-       break
-   else:
-       continue
-    
+
+rounded_monthly_savings = round(monthly_savings,2)
+print("Your monthly savings is $" + str(rounded_monthly_savings) + ".")
+print("You will have enough for your down payment in "+ str(counter) +" months.")
