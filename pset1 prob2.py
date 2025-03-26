@@ -23,7 +23,7 @@ portion_saved = float(input())
 print("Enter the cost of your dream home.")
 total_cost = float(input())
 
-portion_down_payment = (float(total_cost * .25))
+portion_down_payment = total_cost * .25
 
 current_savings = 0
 
@@ -34,15 +34,11 @@ monthly_return = annual_return / 12
 counter = 0
   
 while current_savings < portion_down_payment:
-   monthly_savings = portion_saved * (annual_salary / 12) * (1 + monthly_return)
-   current_savings += monthly_savings
+   monthly_savings = portion_saved * (annual_salary / 12)
+   current_savings += monthly_savings + current_savings * monthly_return
    counter += 1
    
    if counter % 6 == 0:
       annual_salary = annual_salary * (1 + semi_annual_raise)
-   
-   if current_savings >= portion_down_payment:
-       print("You will have enough for your down payment in "+ str(counter) +" months.")
-       break
-   else:
-       continue
+
+print("You will have enough for your down payment in "+ str(counter) +" months.")
